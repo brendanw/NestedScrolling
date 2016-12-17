@@ -40,15 +40,16 @@ public class ParentScrollView extends NestedScrollView {
 
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
-        Log.d(TAG, "target.getY(): " + target.getTop());
-        Log.d(TAG, "find().getY(): " + findViewById(R.id.inner_scroll).getTop());
         int [] pos = new int[2];
         target.getLocationOnScreen(pos);
         if (pos[1] <= 0 && dy > 0) {
+            Log.d(TAG, "onNestedPreScroll: child consumes");
             //allow the child to consume the event
         } else if (pos[1] <= 0 && target.getScrollY() > 0) {
+            Log.d(TAG, "onNestedPreScroll: child consumes");
             //allow the child to consume the event
         } else {
+            Log.d(TAG, "onNestedPreScroll: parent consumes");
             //we consume the event
             scrollBy(0, dy);
             consumed[1] = dy;
@@ -70,7 +71,7 @@ public class ParentScrollView extends NestedScrollView {
     @Override
     public boolean onNestedPreFling(View target, float velocityX, float velocityY) {
         SLog.d(TAG, "onNestedPreFling: ");
-        return true;
+        return false;
         //return super.onNestedPreFling(target, velocityX, velocityY);
     }
 
@@ -78,7 +79,7 @@ public class ParentScrollView extends NestedScrollView {
     @Override
     public boolean onNestedFling(View target, float velocityX, float velocityY, boolean consumed) {
         SLog.d(TAG, "onNestedFling: ");
-        return true;
+        return false;
         //return super.onNestedFling(target, velocityX, velocityY, consumed);
     }
 }
