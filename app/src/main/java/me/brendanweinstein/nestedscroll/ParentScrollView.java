@@ -56,22 +56,8 @@ public class ParentScrollView extends NestedScrollView {
     }
 
     @Override
-    public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        SLog.d(TAG, "onNestedScroll: ");
-        super.onNestedScroll(target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
-    }
-
-    @Override
-    public void onStopNestedScroll(View target) {
-        //SLog.d(TAG, "onStopNestedScroll: ");
-        super.onStopNestedScroll(target);
-    }
-
-    @Override
     public boolean onNestedPreFling(View target, float velocityX, float velocityY) {
-        SLog.d(TAG, "onNestedPreFling: ");
         return true;
-        //return super.onNestedPreFling(target, velocityX, velocityY);
     }
 
 
@@ -79,6 +65,5 @@ public class ParentScrollView extends NestedScrollView {
     public boolean onNestedFling(View target, float velocityX, float velocityY, boolean consumed) {
         SLog.d(TAG, "onNestedFling: ");
         return true;
-        //return super.onNestedFling(target, velocityX, velocityY, consumed);
     }
 }
